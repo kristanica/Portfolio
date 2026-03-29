@@ -73,7 +73,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Project } from '@/types/project'
+import { type Project } from '@/types/project.ts'
 import { ref } from 'vue'
 import ExtraStack from './ExtraStack.vue'
 
