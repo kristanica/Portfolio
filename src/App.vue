@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const currentRoute = computed(() => route.name)
+
 const routeList = [
   {
     name: 'hero',
@@ -26,7 +32,13 @@ const routeList = [
       class="flex flex-col gap-5 justify-center flex-1 min-h-screen items-end bg-[#0A0805] border-r-[#2A2A2A] border-r"
     >
       <router-link v-for="(route, index) in routeList" :to="{ name: route.name }" :key="index"
-        ><i :class="route.icon" class="text-md mx-5 text-[#A3A3A3]"></i
+        ><i
+          :class="[
+            'text-md mx-5 text-2xl hover:text-elevated transition-colors duration-200',
+            route.icon,
+            currentRoute === route.name ? 'text-elevated' : 'text-mute',
+          ]"
+        ></i
       ></router-link>
       <div class="absolute bottom-0 left-0 px-5 w-[25%] border-border border py-2 mx-auto">
         <div class="flex flex-row justify-between">
@@ -40,12 +52,12 @@ const routeList = [
           <p class="text-[8px] left-0">AVAILABLE</p>
         </div>
 
-        <div class="text-sm font-light text-body my-2">
+        <!-- <div class="text-sm font-light text-body my-2">
           I build fast, modern web apps — from clean frontends to solid backends. Based in the
           Philippines, available for work worldwide.
-        </div>
+        </div> -->
 
-        <button class="border-border border w-full text-left px-2 py-2 rounded-md">
+        <button class="border-border border w-full text-left px-2 py-2 rounded-md mt-2">
           Learn More <i class="pi pi-arrow-right text-right text-sm"></i>
         </button>
 
@@ -56,7 +68,7 @@ const routeList = [
       </div>
     </nav>
 
-    <div class="flex-3 bg-[#0A0805] relative px-5">
+    <div class="flex-3 bg-[#0A0805] relative px-5 overflow-hidden">
       <div
         class="absolute min-h-[70%] min-w-[70%] bg-[#7C3AED] rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 blur-[200px] opacity-15"
       ></div>

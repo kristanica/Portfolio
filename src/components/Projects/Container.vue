@@ -1,12 +1,10 @@
 <template>
-  <div class="h-full relative z-0">
-    <!-- Hero Section -->
+  <div>
     <div class="bg-elevated relative flex items-center justify-center h-[30vh] rounded-t-md">
       <p class="absolute top-2 left-2 text-mute text-sm">[{{ index + 1 }}]</p>
       <h1 class="text-xl font-semibold px-4 text-center">{{ projectTitle }}</h1>
     </div>
 
-    <!-- Details Section -->
     <div class="bg-bg px-5 py-6 rounded-b-md h-[30vh] flex flex-col">
       <div class="mb-3">
         <h2 class="text-header font-bold text-xl">{{ projectTitle }}</h2>
@@ -40,7 +38,6 @@
           </button>
         </div>
 
-        <!-- Action Links (2 columns) -->
         <div class="col-span-2 grid grid-cols-2 gap-2">
           <button
             class="flex flex-col items-center justify-center p-2 border border-border rounded-md hover:bg-elevated transition-colors cursor-pointer group"
@@ -50,7 +47,6 @@
               class="pi pi-arrow-up-right text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
             ></i>
           </button>
-
           <button
             class="flex flex-col items-center justify-center p-2 border border-border rounded-md hover:bg-elevated transition-colors cursor-pointer group"
           >

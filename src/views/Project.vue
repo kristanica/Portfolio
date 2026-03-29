@@ -5,7 +5,7 @@
       <p class="text-mute mb-10">~/Hero</p>
 
       <h1 class="text-7xl font-extrabold text-header">PROJECTS</h1>
-      <p class="text-sm text-body">These are some of the things I've worked on recently.</p>
+      <p class="text-sm text-body mt-5">These are some of the things I've worked on recently.</p>
     </div>
 
     <div>
@@ -13,7 +13,9 @@
     </div>
   </header>
 
-  <div class="grid grid-cols-2 gap-1 mt-10 h-[70vh] overflow-y-auto">
+  <div
+    class="mt-5 grid grid-cols-2 gap-1 isolate imt-10 h-[70vh] overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full px-5"
+  >
     <Container
       v-for="(project, index) in projects"
       :projectTitle="project.projectTitle"
@@ -42,17 +44,7 @@ const projects = [
     year: '2025',
     description:
       '   Collaborated on the web version of DevLab, a gamified coding platform built with React.js and Tailwind CSS. Worked alongside a teammate to implement interactive coding challenges, AI-powered code feedback, and progression mechanics.',
-    stack: [
-      'React Native',
-      'Native Tailwind',
-      'Reanimated',
-      'Node.js/Express',
-      'Firebase',
-      'GPT-4.1',
-      'Typescript',
-      'Expo',
-      'TanStack ',
-    ],
+    stack: ['React.js', 'Tailwind', 'CodeMirror', 'Firebase', 'Framer motion', 'GPT-4.1'],
   },
 
   {

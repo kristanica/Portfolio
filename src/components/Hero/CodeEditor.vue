@@ -8,10 +8,10 @@
       <div class="bg-[#C3E88D] h-2 w-2 rounded-full"></div>
     </div>
 
-    <p class="text-sm">Leewell_portfolio.ts</p>
+    <p class="text-sm">leewell_portfolio.ts</p>
   </div>
   <div class="mx-5">
-    <pre class="line-numbers text-[]"><code class="language-typescript">// Portfolio config
+    <pre class="line-numbers text-[]"><code class="language-typescript">// portfolio.config
 const portfolio: Portfolio = {
   name: "Leewell Caputol",
   role: "Full stack developer",
