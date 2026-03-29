@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { type ExtraStack } from '@/types/project.ts'
+import type { ExtraStack } from '@/types/project'
 
 const { projectTitle, stack } = defineProps<ExtraStack>()
 const emit = defineEmits<{

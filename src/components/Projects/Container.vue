@@ -73,9 +73,9 @@
 </template>
 
 <script setup lang="ts">
-import { type Project } from '@/types/project.ts'
 import { ref } from 'vue'
 import ExtraStack from './ExtraStack.vue'
+import type { Project } from '@/types/project'
 
 const { projectTitle, description, stack, year, index } = defineProps<Project>()
 
