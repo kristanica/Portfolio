@@ -1,5 +1,61 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import './index.css'
+import Hero from './views/Hero.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+import About from './views/about.vue'
+import Project from './views/project.vue'
+import Contact from './views/contact.vue'
+import 'primeicons/primeicons.css'
+import 'devicon'
 
-createApp(App).mount('#app')
+const routes = [
+  {
+    name: 'hero',
+    path: '/',
+    component: Hero,
+    meta: {
+      title: 'Home',
+    },
+  },
+  {
+    name: 'contact',
+    path: '/contact',
+    component: Contact,
+    meta: {
+      title: 'Contact',
+    },
+  },
+  {
+    name: 'projects',
+    path: '/Projects',
+    component: Project,
+    meta: {
+      title: 'Projects',
+    },
+  },
+  {
+    name: 'about',
+    path: '/About',
+    component: About,
+    meta: {
+      title: 'About',
+    },
+  },
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})
+
+router.beforeEach((to, from, next) => {
+  let dynamicTitle = ''
+  if (to.meta.title) {
+    dynamicTitle = to.meta.title as string
+  }
+  document.title = `${dynamicTitle}`
+  next()
+})
+
+createApp(App).use(router).mount('#app')
