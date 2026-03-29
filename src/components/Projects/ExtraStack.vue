@@ -32,4 +32,31 @@ const emit = defineEmits<{
 }>()
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+/* Fade in animation */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+/* Optional: scale animation */
+.modal-enter-active .bg-elevated,
+.modal-leave-active .bg-elevated {
+  transition: all 0.3s ease;
+}
+
+.modal-enter-from .bg-elevated {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.modal-leave-to .bg-elevated {
+  transform: scale(0.9);
+  opacity: 0;
+}
+</style>

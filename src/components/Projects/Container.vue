@@ -60,12 +60,16 @@
     </div>
   </div>
 
-  <ExtraStack
-    :projectTitle="projectTitle"
-    :stack="stack"
-    @close="showPopup = false"
-    v-if="showPopup"
-  />
+  <Teleport to="body">
+    <Transition name="modal">
+      <ExtraStack
+        :projectTitle="projectTitle"
+        :stack="stack"
+        @close="showPopup = false"
+        v-if="showPopup"
+      />
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
@@ -81,4 +85,29 @@ const restStack = stack.slice(3)
 const showPopup = ref<boolean>(false)
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-active .bg-elevated,
+.modal-leave-active .bg-elevated {
+  transition: all 0.3s ease;
+}
+
+.modal-enter-from .bg-elevated {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.modal-leave-to .bg-elevated {
+  transform: scale(0.9);
+  opacity: 0;
+}
+</style>

@@ -57,7 +57,7 @@ const routeList = [
           Philippines, available for work worldwide.
         </div> -->
 
-        <button class="border-border border w-full text-left px-2 py-2 rounded-md mt-2">
+        <button class="border-border border w-full text-left px-2 py-2 rounded-md">
           Learn More <i class="pi pi-arrow-right text-right text-sm"></i>
         </button>
 
