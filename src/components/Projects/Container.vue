@@ -1,11 +1,8 @@
 <template>
-  <div>
-    <div class="bg-elevated relative flex items-center justify-center h-[30vh] rounded-t-md">
-      <p class="absolute top-2 left-2 text-mute text-sm">[{{ index + 1 }}]</p>
-      <h1 class="text-xl font-semibold px-4 text-center">{{ projectTitle }}</h1>
-    </div>
-
-    <div class="bg-bg px-5 py-6 rounded-b-md h-[30vh] flex flex-col">
+  <div class="w-[80%]">
+    <div
+      class="bg-bg px-5 py-6 rounded-b-md h-[25vh] flex flex-col border-border border hover:-translate-y-2 hover:border-elevated transition-all duration-200 ease-in cursor-pointer"
+    >
       <div class="mb-3">
         <h2 class="text-header font-bold text-xl">{{ projectTitle }}</h2>
         <p class="text-mute text-sm">{{ year }}</p>
@@ -86,28 +83,17 @@ const showPopup = ref<boolean>(false)
 </script>
 
 <style lang="scss" scoped>
-.modal-enter-active,
-.modal-leave-active {
-  transition: opacity 0.3s ease;
+.modal-enter-from {
+  opacity: 0;
 }
 
-.modal-enter-from,
 .modal-leave-to {
   opacity: 0;
 }
 
-.modal-enter-active .bg-elevated,
-.modal-leave-active .bg-elevated {
-  transition: all 0.3s ease;
-}
-
-.modal-enter-from .bg-elevated {
-  transform: scale(0.9);
-  opacity: 0;
-}
-
-.modal-leave-to .bg-elevated {
-  transform: scale(0.9);
-  opacity: 0;
+.modal-enter-from .modal-container,
+.modal-leave-to .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 </style>

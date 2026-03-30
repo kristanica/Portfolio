@@ -1,30 +1,29 @@
 <template>
-  <p class="text-mute mt-5">WEB DEVELOPER</p>
-  <header class="flex flex-row items-center justify-between">
-    <div>
-      <p class="text-mute mb-10">~/Hero</p>
+  <div class="min-h-screen">
+    <header class="flex flex-row items-center justify-between">
+      <div>
+        <h1 class="text-7xl font-extrabold text-header">PROJECTS</h1>
+        <p class="text-sm text-body mt-5">These are some of the things I've worked on recently.</p>
+      </div>
 
-      <h1 class="text-7xl font-extrabold text-header">PROJECTS</h1>
-      <p class="text-sm text-body mt-5">These are some of the things I've worked on recently.</p>
-    </div>
+      <div>
+        <h1 class="text-mute">{{ projects.length }} Selected Works</h1>
+      </div>
+    </header>
 
-    <div>
-      <h1 class="text-mute">{{ projects.length }} Selected Works</h1>
-    </div>
-  </header>
-
-  <div
-    class="mt-5 grid grid-cols-2 gap-5 isolate imt-10 h-[65vh] overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full px-5"
-  >
-    <Container
-      v-for="(project, index) in projects"
-      :projectTitle="project.projectTitle"
-      :year="project.year"
-      :description="project.description"
-      :index="index"
-      :stack="project.stack"
+    <div
+      class="mt-5 grid grid-cols-2 gap-5 isolate imt-10 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full px-5 place-items-center"
     >
-    </Container>
+      <Container
+        v-for="(project, index) in projects"
+        :projectTitle="project.projectTitle"
+        :year="project.year"
+        :description="project.description"
+        :index="index"
+        :stack="project.stack"
+      >
+      </Container>
+    </div>
   </div>
 </template>
 

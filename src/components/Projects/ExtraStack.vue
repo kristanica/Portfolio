@@ -1,5 +1,8 @@
 <template>
-  <div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+  <div
+    class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+    @click="$emit('close')"
+  >
     <div class="bg-elevated w-[30%] h-[30%] rounded-md">
       <div class="w-full py-3 px-2 flex flex-row justify-between h-[10%] items-center">
         <h1 class="font-bold text-header">FULL STACK</h1>
