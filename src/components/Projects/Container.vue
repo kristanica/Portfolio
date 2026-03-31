@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[80%]">
+  <div class="w-[80%]" @click="$emit('setProject')">
     <div
       class="bg-bg px-5 py-6 rounded-b-md flex flex-col border-border border hover:-translate-y-2 hover:border-elevated transition-all duration-200 ease-in cursor-pointer"
     >
@@ -8,7 +8,7 @@
         <p class="text-mute text-sm">{{ year }}</p>
       </div>
 
-      <p class="text-body text-sm mb-4 text-justify line-clamp-3 flex-1" :title="description">
+      <p class="text-body text-sm mb-4 text-justify line-clamp-2 flex-1" :title="description">
         {{ description }}
       </p>
 
@@ -26,13 +26,13 @@
             </div>
           </div>
 
-          <button
+          <!-- <button
             v-if="restStack.length > 0"
             @click="showPopup = true"
             class="text-xs text-mute hover:text-header transition-colors mt-2 underline cursor-pointer"
           >
             +{{ restStack.length }} more
-          </button>
+          </button> -->
         </div>
 
         <div class="col-span-2 grid grid-cols-2 gap-2">
@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <Teleport to="body">
+  <!-- <Teleport to="body">
     <Transition name="modal">
       <ExtraStack
         :projectTitle="projectTitle"
@@ -66,20 +66,24 @@
         v-if="showPopup"
       />
     </Transition>
-  </Teleport>
+  </Teleport> -->
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import ExtraStack from './ExtraStack.vue'
+// import { ref } from 'vue'
+// import ExtraStack from './ExtraStack.vue'
 import type { Project } from '@/types/project'
 
-const { projectTitle, description, stack, year, index } = defineProps<Project>()
+const { projectTitle, description, stack, year } = defineProps<Project>()
+
+const emit = defineEmits<{
+  (e: 'setProject'): void
+}>()
 
 const topStack = stack.slice(0, 3)
-const restStack = stack.slice(3)
+// const restStack = stack.slice(3)
 
-const showPopup = ref<boolean>(false)
+// const showPopup = ref<boolean>(false)
 </script>
 
 <style lang="scss" scoped>

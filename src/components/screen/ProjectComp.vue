@@ -2,35 +2,127 @@
   <div class="min-h-screen">
     <header class="flex flex-row items-center justify-between">
       <div>
-        <h1 class="text-7xl font-extrabold text-header">PROJECTS</h1>
-        <p class="text-sm text-body mt-5">These are some of the things I've worked on recently.</p>
+        <motion.h1
+          class="text-header font-extrabold text-6xl"
+          :initial="{ opacity: 0, x: -50 }"
+          :whileInView="{ opacity: 1, x: 0 }"
+        >
+          <h1 class="text-7xl font-extrabold text-header">PROJECTS</h1>
+        </motion.h1>
+
+        <motion.p
+          class="text-sm text-body mt-5"
+          :initial="{ opacity: 0, x: -50 }"
+          :whileInView="{ opacity: 1, x: 0 }"
+          :transition="{
+            type: 'spring',
+            stiffness: 150,
+            damping: 30,
+            mass: 1,
+          }"
+          >These are some of the things I've worked on recently.</motion.p
+        >
       </div>
 
       <div>
-        <h1 class="text-mute">{{ projects.length }} Selected Works</h1>
+        <motion.h1
+          class="text-mute"
+          :initial="{ opacity: 0, x: 50 }"
+          :whileInView="{ opacity: 1, x: 0 }"
+          >{{ projects.length }} Selected Works</motion.h1
+        >
       </div>
     </header>
 
     <div
-      class="mt-5 grid grid-cols-2 gap-5 isolate imt-10 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full px-5 place-items-center"
+      class="mt-15 grid grid-cols-2 gap-5 isolate imt-10 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full px-5 place-items-center"
     >
-      <Container
+      <motion.div
         v-for="(project, index) in projects"
-        :projectTitle="project.projectTitle"
-        :year="project.year"
-        :description="project.description"
-        :index="index"
-        :stack="project.stack"
+        :key="index"
+        :initial="{ opacity: 0, x: -20 }"
+        :whileInView="{ opacity: 1, x: 0 }"
+        :transition="{
+          type: 'spring',
+          stiffness: 80,
+          damping: 30,
+          mass: 1,
+          delay: index * 0.1,
+        }"
       >
-      </Container>
+        <Container
+          :projectTitle="project.projectTitle"
+          :year="project.year"
+          :description="project.description"
+          :index="index"
+          :stack="project.stack"
+          @setProject="setProjectValue(project)"
+        >
+        </Container>
+      </motion.div>
     </div>
+
+    <Teleport to="body">
+      <Transition
+        enter-active-class="transition-opacity  duration-300 ease-out"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="transition-opacity duration-300 ease-in"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
+      >
+        <div
+          class="fixed bg-black/50 inset-0 z-50"
+          v-show="sideOpen"
+          @click="sideOpen = false"
+        ></div>
+      </Transition>
+
+      <Transition
+        enter-active-class="transition-transform  duration-300 ease-out"
+        enter-from-class="translate-x-full"
+        enter-to-class="translate-x-0"
+        leave-active-class="transition-transform  duration-300 ease-in"
+        leave-from-class="translate-x-0"
+        leave-to-class="translate-x-full"
+      >
+        <SideBar
+          :projectTitle="setProject.projectTitle"
+          :description="setProject.description"
+          :stack="setProject.stack"
+          :year="setProject.year"
+          v-if="sideOpen"
+          @close="sideOpen = false"
+        >
+        </SideBar>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Container from '@/components/Projects/Container.vue'
+import type { Project } from '@/types/project'
+import { ref } from 'vue'
+import SideBar from '../Projects/SideBar.vue'
+import { delay, motion } from 'motion-v'
 
-const projects = [
+const setProject = ref<Project>({
+  projectTitle: '',
+  year: '',
+  description: '',
+  stack: [],
+})
+
+const sideOpen = ref<boolean>(false)
+
+const setProjectValue = (project: Project) => {
+  setProject.value = project
+  console.log(setProject.value)
+  sideOpen.value = true
+}
+
+const projects: Project[] = [
   {
     projectTitle: 'Portfolio',
     year: '2026',

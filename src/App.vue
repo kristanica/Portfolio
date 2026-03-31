@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MotionConfig } from 'motion-v'
+import { motion, MotionConfig } from 'motion-v'
 import { onMounted, onUnmounted, ref, nextTick } from 'vue'
 
 const isOpen = ref<boolean>(false)
@@ -52,12 +52,9 @@ const listenToScroll = async () => {
 
     entries.forEach((entry) => {
       if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-        console.log('hello')
-        console.log(entry.intersectionRatio)
         maxRatio = entry.intersectionRatio
         beingViewed.value = entry.target.id
         if (beingViewed.value !== 'Hero') {
-          console.log('test!')
           nav.value?.classList.add('left-1/2', 'transform', '-translate-x-1/2')
         } else {
           nav.value?.classList.remove('left-1/2', 'transform', '-translate-x-1/2')
@@ -84,7 +81,7 @@ onUnmounted(() => {
     <nav
       ref="nav"
       :class="[
-        'flex flex-row gap-5 bg-bg border-border border top-5 right-5 py-1  w-[30%] justify-center absolute  rounded-full items-end  transition-all duration-300 z-10',
+        'flex flex-row gap-5 bg-bg border-border border top-5 right-5 py-1  w-[30%] justify-center absolute  rounded-full items-end  transition-all duration-300 z-10 ',
       ]"
     >
       <a
@@ -92,9 +89,8 @@ onUnmounted(() => {
         :key="index"
         @click="scrollToView(route.name)"
         :class="[
-          'text-md mx-5 text-sm hover:text-elevated rounded-full px-2 py-1   transition-all duration-200 cursor-pointer',
-
-          beingViewed === route.name ? 'bg-header' : '',
+          'text-md mx-5 text-sm hover:text-mute rounded-full px-2 py-1  transition-all duration-200 cursor-pointer text-header',
+          beingViewed === route.name ? 'bg-mute' : '',
         ]"
       >
         {{ route.name }}

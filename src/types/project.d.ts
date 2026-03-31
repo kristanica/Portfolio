@@ -3,7 +3,6 @@ export type Project = {
   year: string
   description: string
   stack: string[]
-  index: number
 }
 
 export type ExtraStack = {

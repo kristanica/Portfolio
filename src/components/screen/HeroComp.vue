@@ -1,5 +1,10 @@
 <template>
-  <p class="text-mute mt-5">WEB DEVELOPER</p>
+  <motion.p
+    class="text-mute mt-5"
+    :initial="{ opacity: 0, y: -20 }"
+    :while-in-view="{ opacity: 1, y: 0 }"
+    >WEB DEVELOPER</motion.p
+  >
   <div class="flex flex-col justify-center min-h-screen overflow-y-hidden">
     <motion.div :initial="{ opacity: 0, x: -50 }" :while-in-view="{ opacity: 1, x: 0 }">
       <Header> </Header>
@@ -52,7 +57,7 @@
   <motion.div
     :initial="{ opacity: 0, y: 50 }"
     :while-in-view="{ opacity: 1, y: 0 }"
-    class="flex flex-col text-end bottom-0 absolute right-0 overflow-hidden px-5"
+    class="flex flex-col text-end bottom-0 absolute right-15 overflow-hidden px-5"
   >
     <p class="font-light">AVAILABLE FOR WORK</p>
     <h1 class="text-5xl font-bold">PORTFOLIO'26</h1>
