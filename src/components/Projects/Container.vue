@@ -1,7 +1,7 @@
 <template>
   <div class="w-[80%]">
     <div
-      class="bg-bg px-5 py-6 rounded-b-md h-[25vh] flex flex-col border-border border hover:-translate-y-2 hover:border-elevated transition-all duration-200 ease-in cursor-pointer"
+      class="bg-bg px-5 py-6 rounded-b-md flex flex-col border-border border hover:-translate-y-2 hover:border-elevated transition-all duration-200 ease-in cursor-pointer"
     >
       <div class="mb-3">
         <h2 class="text-header font-bold text-xl">{{ projectTitle }}</h2>

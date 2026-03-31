@@ -1,68 +1,127 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { MotionConfig } from 'motion-v'
+import { onMounted, onUnmounted, ref, nextTick } from 'vue'
 
 const isOpen = ref<boolean>(false)
-const route = useRoute()
-const currentRoute = computed(() => route.name)
 
 const routeList = [
   {
-    name: 'hero',
+    name: 'Hero',
     icon: 'pi pi-home',
   },
 
   {
-    name: 'about',
+    name: 'About',
     icon: 'pi pi-user',
   },
 
   {
-    name: 'projects',
+    name: 'Project',
     icon: 'pi pi-folder',
   },
   {
-    name: 'contact',
+    name: 'Contact',
     icon: 'pi pi-send',
   },
 ]
+
+const scrollToView = (sectionId: string) => {
+  document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+}
+
+let observer: IntersectionObserver | null
+
+const beingViewed = ref<string>('Hero')
+const toListen = ref<HTMLDivElement | null>(null)
+const nav = ref<HTMLDivElement | null>(null)
+const listenToScroll = async () => {
+  await nextTick()
+  await new Promise(requestAnimationFrame)
+  if (!toListen.value) return
+
+  observer?.disconnect()
+  const options = {
+    root: toListen.value,
+    rootMargin: '0px',
+    scrollMargin: '0px',
+    threshold: 0.3,
+  }
+
+  observer = new IntersectionObserver((entries) => {
+    let maxRatio = 0
+
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+        console.log('hello')
+        console.log(entry.intersectionRatio)
+        maxRatio = entry.intersectionRatio
+        beingViewed.value = entry.target.id
+        if (beingViewed.value !== 'Hero') {
+          console.log('test!')
+          nav.value?.classList.add('left-1/2', 'transform', '-translate-x-1/2')
+        } else {
+          nav.value?.classList.remove('left-1/2', 'transform', '-translate-x-1/2')
+        }
+      }
+    })
+  }, options)
+  const sections = document.querySelectorAll('#Hero, #About, #Project, #Contact')
+  sections.forEach((section) => {
+    observer?.observe(section)
+  })
+}
+
+onMounted(() => {
+  listenToScroll()
+})
+
+onUnmounted(() => {
+  observer?.disconnect()
+})
 </script>
 <template>
   <main class="flex">
-    <button
-      @click="isOpen = !isOpen"
-      class="absolute top-5 left-5 z-50 bg-elevated px-3 py-2 rounded-md border border-border"
+    <nav
+      ref="nav"
+      :class="[
+        'flex flex-row gap-5 bg-bg border-border border top-5 right-5 py-1  w-[30%] justify-center absolute  rounded-full items-end  transition-all duration-300 z-10',
+      ]"
     >
-      <i class="pi pi-bars"></i>
-    </button>
+      <a
+        v-for="(route, index) in routeList"
+        :key="index"
+        @click="scrollToView(route.name)"
+        :class="[
+          'text-md mx-5 text-sm hover:text-elevated rounded-full px-2 py-1   transition-all duration-200 cursor-pointer',
 
+          beingViewed === route.name ? 'bg-header' : '',
+        ]"
+      >
+        {{ route.name }}
+      </a>
+    </nav>
     <div
+      id="toListen"
+      ref="toListen"
       :class="[
         'bg-[#0A0805] relative  element  px-20 overflow-hidden h-screen overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full transition-all duration-300',
         isOpen ? 'w-screen ' : 'w-full ',
       ]"
     >
-      <nav
-        :class="[
-          'flex flex-col gap-5 bg-bg justify-center min-h-screen items-end  transition-all duration-300 absolute z-10',
-          isOpen ? 'w-[10vw]' : 'w-0 overflow-hidden',
-        ]"
-      >
-        <router-link v-for="(route, index) in routeList" :to="{ name: route.name }" :key="index"
-          ><i
-            :class="[
-              'text-md mx-5 text-2xl hover:text-elevated transition-colors duration-200',
-              route.icon,
-              currentRoute === route.name ? 'text-elevated' : 'text-mute',
-            ]"
-          ></i
-        ></router-link>
-      </nav>
       <div
         class="absolute inset-0 pointer-events-none bg-[#7C3AED] rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 blur-[200px] opacity-15"
       ></div>
 
-      <router-view> </router-view>
+      <motion-config
+        :transition="{
+          type: 'spring',
+          stiffness: 80,
+          damping: 30,
+          mass: 1,
+        }"
+      >
+        <router-view> </router-view>
+      </motion-config>
     </div>
   </main>
 </template>
@@ -76,30 +135,3 @@ const routeList = [
   background-size: 32px 32px;
 }
 </style>
-
-<!-- <div class="absolute bottom-0 left-0 px-5 w-full border-border border py-2 mx-auto">
-          <div class="flex flex-row justify-between">
-            <div class="flex flex-row items-center">
-              <div class="h-7 w-7 bg-mute rounded-full"></div>
-              <div class="ml-2">
-                <h1 class="text-header font-bold">LEEWELL CAPUTOL</h1>
-                <p class="text-xs text-mute">Web Developer</p>
-              </div>
-            </div>
-            <p class="text-[8px] left-0">AVAILABLE</p>
-          </div>
-
-          <div class="text-sm font-light text-body my-2">
-          I build fast, modern web apps — from clean frontends to solid backends. Based in the
-          Philippines, available for work worldwide.
-        </div>
-
-          <button class="border-border border w-full text-left px-2 py-2 rounded-md">
-            Learn More <i class="pi pi-arrow-right text-right text-sm"></i>
-          </button>
-
-          <div class="mt-3 flex flex-row gap-2">
-            <i class="devicon-github-original text-2xl"></i>
-            <i class="devicon-linkedin-plain text-2xl"></i>
-          </div>
-        </div> -->

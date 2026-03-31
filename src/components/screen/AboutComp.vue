@@ -1,11 +1,10 @@
 <template>
-  <div class="flex items-center min-h-[70vh] justify-between">
+  <div iv class="flex items-center min-h-screen justify-between">
     <div class="w-[20%] flex flex-col items-start">
       <motion.h1
         class="text-header font-extrabold text-6xl"
-        :initial="{ opacity: 0, x: -20 }"
+        :initial="{ opacity: 0, x: -50 }"
         :whileInView="{ opacity: 1, x: 0 }"
-        :transition="{ type: 'spring', stiffness: 120, damping: 20 }"
       >
         A little about <span class="text-dim">me.</span>
       </motion.h1>
@@ -20,8 +19,7 @@
           :key="index"
           :initial="{ opacity: 0, y: -20 }"
           :whileInView="{ opacity: 1, y: 0 }"
-          :viewport="{ once: true }"
-          :transition="{ type: 'spring', stiffness: 120, damping: 20, delay: index * 0.1 }"
+          :transition="{ type: 'spring', stiffness: 80, damping: 20, delay: index * 0.1 }"
         >
           <h1 :key="index" class="text-red-400 my-2 tracking-widest font-medium">
             {{ about.label }}
@@ -34,12 +32,21 @@
   <div class="min-h-screen flex flex-col text-white items-center justify-center">
     <div class="flex flex-col items-center justify-center flex-1 px-6">
       <!-- Title -->
-      <h1 class="text-5xl font-extrabold text-header text-center mb-4">
+
+      <motion.h1
+        class="text-5xl font-extrabold text-header text-center mb-4"
+        :initial="{ opacity: 0, x: -20 }"
+        :whileInView="{ opacity: 1, x: 0 }"
+      >
         The Magic <span class="text-primary">Behind</span>
-      </h1>
-      <p class="text-sm text-body mb-10 text-center max-w-xl">
+      </motion.h1>
+      <motion.p
+        class="text-sm text-body mb-10 text-center max-w-xl"
+        :initial="{ opacity: 0, x: 20 }"
+        :whileInView="{ opacity: 1, x: 0 }"
+      >
         A collection of technologies and tools that power the experience.
-      </p>
+      </motion.p>
 
       <div class="space-y-6 w-full max-w-3xl">
         <div class="flex flex-wrap justify-center gap-3">

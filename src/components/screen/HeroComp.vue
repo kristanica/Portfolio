@@ -1,16 +1,7 @@
 <template>
   <p class="text-mute mt-5">WEB DEVELOPER</p>
-  <div class="flex flex-col justify-center min-h-[90%] overflow-y-hidden">
-    <motion.div
-      :initial="{ opacity: 0, x: -50 }"
-      :animate="{ opacity: 1, x: 0 }"
-      :transition="{
-        type: 'spring',
-        stiffness: 80,
-        damping: 30,
-        mass: 1,
-      }"
-    >
+  <div class="flex flex-col justify-center min-h-screen overflow-y-hidden">
+    <motion.div :initial="{ opacity: 0, x: -50 }" :while-in-view="{ opacity: 1, x: 0 }">
       <Header> </Header>
     </motion.div>
 
@@ -20,7 +11,7 @@
           <i class="pi pi-arrow-down-right mb-3"></i>
           <motion.p
             :initial="{ opacity: 0 }"
-            :animate="{ opacity: 1 }"
+            :while-in-view="{ opacity: 1 }"
             :transition="{ duration: 0.5 }"
             class="text-sm text-body"
           >
@@ -32,7 +23,7 @@
         <div class="flex flex-row gap-5 my-5">
           <motion.div
             :initial="{ opacity: 0 }"
-            :animate="{ opacity: 1 }"
+            :while-in-view="{ opacity: 1 }"
             :transition="{ type: 'spring', stiffness: 120, damping: 20, delay: index * 0.1 }"
             v-for="(icon, index) in devIcons"
             :key="index"
@@ -42,17 +33,7 @@
           </motion.div>
         </div>
 
-        <motion.div
-          class="flex flex-row gap-5"
-          :initial="{ x: 50 }"
-          :animate="{ x: 0 }"
-          :transition="{
-            type: 'spring',
-            stiffness: 200,
-            damping: 30,
-            mass: 1,
-          }"
-        >
+        <motion.div class="flex flex-row gap-5" :initial="{ x: 50 }" :while-in-view="{ x: 0 }">
           <button class="border-border border-2 px-7 py-2 rounded-md text-sm">
             CONTACT <i class="pi pi-envelope ml-2"></i>
           </button>
@@ -62,26 +43,20 @@
           </button>
         </motion.div>
       </div>
-      <motion.div
-        class="rounded-xl col-span-4"
-        :initial="{ x: 50 }"
-        :animate="{ x: 0 }"
-        :transition="{
-          type: 'spring',
-          stiffness: 200,
-          damping: 30,
-          mass: 1,
-        }"
-      >
+      <motion.div class="rounded-xl col-span-4" :initial="{ x: 50 }" :while-in-view="{ x: 0 }">
         <CodeEditor></CodeEditor>
       </motion.div>
     </div>
   </div>
 
-  <div class="flex flex-col text-end bottom-0 absolute right-0 overflow-hidden px-5">
+  <motion.div
+    :initial="{ opacity: 0, y: 50 }"
+    :while-in-view="{ opacity: 1, y: 0 }"
+    class="flex flex-col text-end bottom-0 absolute right-0 overflow-hidden px-5"
+  >
     <p class="font-light">AVAILABLE FOR WORK</p>
     <h1 class="text-5xl font-bold">PORTFOLIO'26</h1>
-  </div>
+  </motion.div>
 </template>
 
 <script setup>

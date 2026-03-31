@@ -1,7 +1,7 @@
 <template>
   <div
     ref="card"
-    class="border-border border rounded-xl bg-bg relative z-10 perspective-[1000px] transition-shadow duration-200 ease-out"
+    class="border-border border rounded-xl relative z-10 perspective-[1000px] transition-shadow duration-200 ease-out"
     @mousemove="handleMouseMove"
     @mouseleave="handleMouseLeave"
   >
@@ -15,7 +15,7 @@
       </div>
       <p class="text-sm">leewell_portfolio.ts</p>
     </div>
-    <div class="mx-5 bg-bg">
+    <div class="mx-5">
       <pre
         class="line-numbers language-typescript"
       ><code class="language-typescript">// portfolio.config
