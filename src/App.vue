@@ -81,26 +81,37 @@ onUnmounted(() => {
     <nav
       ref="nav"
       :class="[
-        'flex flex-row gap-5 bg-bg border-border border top-5 right-5 py-1  w-[30%] justify-center absolute  rounded-full items-end  transition-all duration-300 z-10 ',
+        'flex flex-row gap-5 bg-bg border-border border top-5 right-5 py-1  w-[30%] justify-center absolute  rounded-full items-end  transition-all duration-300 z-99 ',
       ]"
     >
-      <a
+      <motion.a
         v-for="(route, index) in routeList"
         :key="index"
         @click="scrollToView(route.name)"
+        :animate="beingViewed === route.name ? 'active' : 'inactive'"
+        :variants="{
+          active: {
+            scale: 1.1,
+            backgroundColor: '#2a2a2a',
+          },
+          inactive: {
+            scale: 1,
+            backgroundColor: 'transparent',
+          },
+        }"
         :class="[
-          'text-md mx-5 text-sm hover:text-mute rounded-full px-2 py-1  transition-all duration-200 cursor-pointer text-header',
+          'text-md mx-5 text-sm hover:text-mute rounded-full px-3 my-1 py-1  transition-all duration-200 cursor-pointer text-header',
           beingViewed === route.name ? 'bg-mute' : '',
         ]"
       >
         {{ route.name }}
-      </a>
+      </motion.a>
     </nav>
     <div
       id="toListen"
       ref="toListen"
       :class="[
-        'bg-[#0A0805] relative  element  px-20 overflow-hidden h-screen overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full transition-all duration-300',
+        'bg-[#0A0805] relative  element  overflow-hidden h-screen overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full transition-all duration-300',
         isOpen ? 'w-screen ' : 'w-full ',
       ]"
     >

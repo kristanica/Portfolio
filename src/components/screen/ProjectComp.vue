@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen mb-50">
     <header class="flex flex-row items-center justify-between">
       <div>
         <motion.h1
