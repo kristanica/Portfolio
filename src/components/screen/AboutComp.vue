@@ -16,7 +16,10 @@
       >
         <div>
           <h1>A little about</h1>
-          <span class="bg-primary-gradient bg-clip-text text-gradient text-transparent">me.</span>
+          <span
+            class="bg-primary-gradient bg-clip-text text-gradient text-transparent font-fraunces"
+            >me.</span
+          >
         </div>
       </motion.div>
 
@@ -49,9 +52,9 @@
           :whileInView="{ opacity: 1, y: 0 }"
           :transition="{ type: 'spring', stiffness: 80, damping: 20, delay: index * 0.1 }"
         >
-          <h1 :key="index" class="text-red-400 my-2 tracking-widest font-medium">
+          <h3 class="font-mono text-xs tracking-[0.28em] mb-2 uppercase text-purple-300">
             {{ about.label }}
-          </h1>
+          </h3>
           <p class="text-justify" v-html="about.description"></p>
         </motion.div>
       </div>
@@ -93,7 +96,9 @@
 
         <h2 class="text-5xl lg:text-6xl font-bold">
           <span class="text-white">The Magic</span>
-          <span class="text-gradient bg-primary-gradient bg-clip-text text-transparent">
+          <span
+            class="text-gradient bg-primary-gradient bg-clip-text text-transparent font-fraunces"
+          >
             Behind</span
           >
         </h2>

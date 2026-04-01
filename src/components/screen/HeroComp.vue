@@ -8,7 +8,7 @@
 
     <h1>AVAILABLE FOR WORK</h1>
   </motion.div>
-  <section class="flex flex-row items-center min-h-screen overflow-hidden">
+  <section class="flex flex-row items-center min-h-screen overflow-hidden justify-between">
     <div class="mt-5">
       <motion.div :initial="{ opacity: 0, x: -50 }" :while-in-view="{ opacity: 1, x: 0 }">
         <Header> </Header>

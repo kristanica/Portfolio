@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { motion, MotionConfig } from 'motion-v'
+import { motion, MotionConfig, useScroll } from 'motion-v'
 import { onMounted, onUnmounted, ref, nextTick } from 'vue'
 
-const isOpen = ref<boolean>(false)
+/**
+ * ==============   Styles   ================
+ */
 
 const routeList = [
   {
@@ -33,10 +35,17 @@ let observer: IntersectionObserver | null
 
 const beingViewed = ref<string>('Hero')
 const toListen = ref<HTMLDivElement | null>(null)
-const nav = ref<HTMLDivElement | null>(null)
+
+const scrollYProgress = ref<any>(0)
 const listenToScroll = async () => {
+  // Wait for DOM to be ready for listeting
   await nextTick()
+
   await new Promise(requestAnimationFrame)
+
+  const { scrollYProgress: p } = useScroll({ container: toListen })
+  scrollYProgress.value = p
+
   if (!toListen.value) return
 
   observer?.disconnect()
@@ -63,6 +72,12 @@ const listenToScroll = async () => {
   })
 }
 
+const scrollIndicatorStyle = {
+  position: 'fixed',
+
+  transformOrigin: '0 0',
+}
+
 onMounted(() => {
   listenToScroll()
 })
@@ -73,7 +88,18 @@ onUnmounted(() => {
 </script>
 <template>
   <main class="flex">
-    <nav
+    <motion.div
+      :style="{ ...scrollIndicatorStyle, scaleY: scrollYProgress }"
+      class="h-30 w-1 bg-primary-gradient fixed right-5 top-80 z-50 rounded-2xl"
+    ></motion.div>
+
+    <motion.nav
+      :initial="{ opacity: 0, y: -70 }"
+      :animate="{ opacity: 1, y: 0 }"
+      :transition="{
+        duration: 0.3,
+        ease: 'easeIn',
+      }"
       ref="nav"
       :class="[
         'fixed z-50 flex flex-row gap-2 md:gap-5 px-3 py-2 md:py-1 w-fit h-fit bg-bg/80 backdrop-blur-md border border-border rounded-full shadow-lg transition-all duration-300',
@@ -107,13 +133,12 @@ onUnmounted(() => {
           {{ route.name }}
         </p>
       </motion.a>
-    </nav>
+    </motion.nav>
     <div
       id="toListen"
       ref="toListen"
       :class="[
         'bg-[#0A0805] relative  element   h-screen overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full transition-all duration-300',
-        isOpen ? 'w-screen ' : 'w-full ',
       ]"
     >
       <motion-config

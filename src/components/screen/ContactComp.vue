@@ -12,7 +12,8 @@
       <motion.div :initial="{ opacity: 0, x: -50 }" :whileInView="{ opacity: 1, x: 0 }">
         <h1 class="text-5xl font-extrabold text-header uppercase tracking-tight">
           Let's work <br />
-          <span class="bg-primary-gradient bg-clip-text text-gradient text-transparent"
+          <span
+            class="bg-primary-gradient bg-clip-text text-gradient text-transparent font-fraunces"
             >together.</span
           >
         </h1>

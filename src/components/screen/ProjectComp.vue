@@ -20,7 +20,8 @@
           >
             <h1 class="text-7xl font-extrabold text-header">
               What I
-              <span class="bg-primary-gradient bg-clip-text text-gradient text-transparent"
+              <span
+                class="bg-primary-gradient bg-clip-text text-gradient text-transparent font-fraunces"
                 >did.</span
               >
             </h1>

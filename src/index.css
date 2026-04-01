@@ -1,3 +1,7 @@
+@import url('https://googleapis.com');
+@import url('https://fonts.gstatic.com');
+@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Great+Vibes&family=Italianno&family=Satisfy&display=swap');
+@import url('"https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Great+Vibes&family=Italianno&family=Pacifico&family=Satisfy&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -6,7 +10,9 @@
   --color-surface: #141414;
   --color-elevated: #1a1a1a;
   --color-hover: #0f0f0f;
-
+  --font-roboto: 'Roboto', sans-serif;
+  --font-italiano: 'Italianno', cursive;
+  --font-fraunces: 'Fraunces', serif;
   /* Borders - More nuanced with better contrast */
   --color-border: #1f1f1f;
   --color-border-mid: #2d2d2d;

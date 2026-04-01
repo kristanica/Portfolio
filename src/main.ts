@@ -49,13 +49,13 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from, next) => {
-  let dynamicTitle = ''
-  if (to.meta.title) {
-    dynamicTitle = to.meta.title as string
-  }
-  document.title = `${dynamicTitle}`
-  next()
-})
+// router.beforeEach((to, from, next) => {
+//   let dynamicTitle = ''
+//   if (to.meta.title) {
+//     dynamicTitle = to.meta.title as string
+//   }
+//   document.title = `${dynamicTitle}`
+//   next()
+// })
 
 createApp(App).use(router).mount('#app')
