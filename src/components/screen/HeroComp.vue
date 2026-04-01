@@ -42,6 +42,7 @@
 
         <motion.div class="flex flex-row gap-5" :initial="{ x: 50 }" :while-in-view="{ x: 0 }">
           <button
+            @click="scrollToContact"
             class="border-border border rounded-md items-center px-5 py-4 h-full hover:bg-elevated/10 transition-all duration-200 ease-in-out cursor-pointer hover:scale-105 hover:border-border-mid"
           >
             CONTACT <i class="pi pi-envelope ml-2"></i>
