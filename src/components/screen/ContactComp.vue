@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <header class="flex flex-col w-full mb-10">
+    <header class="flex flex-col w-full justify-center md:items-start items-center mb-10">
       <motion.div
         class="flex flex-row items-center gap-2"
         :initial="{ opacity: 0, x: -50 }"
@@ -36,7 +36,7 @@
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-      <div class="grid grid-cols-1 grid-cols-2 gap-4 h-fit">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-fit">
         <motion.div
           class="border-border border rounded-md w-full flex flex-row justify-between items-center px-5 py-4 h-full hover:bg-elevated/10 transition-colors cursor-pointer"
           v-for="(contact, index) in contactInfo"

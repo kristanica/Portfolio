@@ -1,7 +1,7 @@
 <template>
   <div
     iv
-    class="flex items-center min-h-screen justify-between flex-col sm:flex-col lg:flex-row items-start md:flex-col"
+    class="flex min-h-screen items-center justify-between flex-col sm:flex-col lg:flex-row md:flex-col"
   >
     <div class="">
       <motion.div

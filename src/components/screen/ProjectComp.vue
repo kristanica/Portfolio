@@ -1,7 +1,9 @@
 <template>
   <div class="min-h-screen mb-50">
-    <div class="grid grid-cols-2 relative items-start">
-      <header class="sticky top-0 h-screen flex flex-col justify-center pr-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 relative items-start">
+      <header
+        class="md:sticky md:top-0 md:h-screen flex justify-center md:flex-col md:justify-center"
+      >
         <div>
           <motion.div
             class="flex flex-row items-center gap-2"
@@ -43,7 +45,7 @@
         </div>
       </header>
 
-      <div class="flex flex-col gap-10 py-32 px-5">
+      <div class="flex flex-col gap-10 md:py-32 px-5 mt-20 md:mt-0">
         <motion.div
           v-for="(project, index) in projects"
           :key="index"

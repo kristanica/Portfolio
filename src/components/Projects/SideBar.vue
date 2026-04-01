@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed right-0 flex flex-col justify-between element w-[35%] top-0 h-screen bg-elevated z-50 px-5 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full"
+    class="fixed right-0 flex flex-col justify-between element w-[70%] lg:w-[35%] top-0 h-screen bg-elevated z-50 px-5 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full"
   >
     <div class="mt-10">
       <button
