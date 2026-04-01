@@ -1,67 +1,67 @@
 <template>
   <div class="min-h-screen mb-50">
-    <header class="flex flex-row items-center justify-between">
-      <div>
-        <motion.h1
-          class="text-header font-extrabold text-6xl"
-          :initial="{ opacity: 0, x: -50 }"
-          :whileInView="{ opacity: 1, x: 0 }"
-        >
-          <h1 class="text-7xl font-extrabold text-header">PROJECTS</h1>
-        </motion.h1>
+    <div class="grid grid-cols-2 relative items-start">
+      <header class="sticky top-0 h-screen flex flex-col justify-center pr-10">
+        <div>
+          <motion.div
+            class="flex flex-row items-center gap-2"
+            :initial="{ opacity: 0, x: -50 }"
+            :whileInView="{ opacity: 1, x: 0 }"
+          >
+            <div
+              class="h-px w-5 bg-linear-to-r from-transparent via-purple-500 to-purple-500"
+            ></div>
+            <p>Projects</p>
+          </motion.div>
+          <motion.div
+            class="text-header font-extrabold text-6xl"
+            :initial="{ opacity: 0, x: -50 }"
+            :whileInView="{ opacity: 1, x: 0 }"
+          >
+            <h1 class="text-7xl font-extrabold text-header">
+              What I
+              <span class="bg-primary-gradient bg-clip-text text-gradient text-transparent"
+                >did.</span
+              >
+            </h1>
+          </motion.div>
 
-        <motion.p
-          class="text-sm text-body mt-5"
-          :initial="{ opacity: 0, x: -50 }"
+          <motion.p
+            class="text-sm text-body mt-5"
+            :initial="{ opacity: 0, x: -50 }"
+            :whileInView="{ opacity: 1, x: 0 }"
+            :transition="{
+              type: 'spring',
+              stiffness: 150,
+              damping: 30,
+              mass: 1,
+            }"
+          >
+            These are some of the things I've worked on recently.
+          </motion.p>
+        </div>
+      </header>
+
+      <div class="flex flex-col gap-10 py-32 px-5">
+        <motion.div
+          v-for="(project, index) in projects"
+          :key="index"
+          :initial="{ opacity: 0, x: -20 }"
           :whileInView="{ opacity: 1, x: 0 }"
-          :transition="{
-            type: 'spring',
-            stiffness: 150,
-            damping: 30,
-            mass: 1,
-          }"
-          >These are some of the things I've worked on recently.</motion.p
+          :transition="{ type: 'spring', stiffness: 80, damping: 30, mass: 1, delay: 0.1 * index }"
         >
+          <Container
+            :projectTitle="project.projectTitle"
+            :year="project.year"
+            :description="project.description"
+            :stack="project.stack"
+            :index="index"
+            @setProject="setProjectValue(project)"
+          />
+        </motion.div>
       </div>
-
-      <div>
-        <motion.h1
-          class="text-mute"
-          :initial="{ opacity: 0, x: 50 }"
-          :whileInView="{ opacity: 1, x: 0 }"
-          >{{ projects.length }} Selected Works</motion.h1
-        >
-      </div>
-    </header>
-
-    <div
-      class="mt-15 grid grid-cols-2 gap-5 isolate imt-10 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full px-5 place-items-center"
-    >
-      <motion.div
-        v-for="(project, index) in projects"
-        :key="index"
-        :initial="{ opacity: 0, x: -20 }"
-        :whileInView="{ opacity: 1, x: 0 }"
-        :transition="{
-          type: 'spring',
-          stiffness: 80,
-          damping: 30,
-          mass: 1,
-          delay: index * 0.1,
-        }"
-      >
-        <Container
-          :projectTitle="project.projectTitle"
-          :year="project.year"
-          :description="project.description"
-          :index="index"
-          :stack="project.stack"
-          @setProject="setProjectValue(project)"
-        >
-        </Container>
-      </motion.div>
     </div>
-
+    <!-- SIDEBAR -->
     <Teleport to="body">
       <Transition
         enter-active-class="transition-opacity  duration-300 ease-out"
@@ -97,6 +97,7 @@
         </SideBar>
       </Transition>
     </Teleport>
+    <!-- SIDEBAREMD -->
   </div>
 </template>
 

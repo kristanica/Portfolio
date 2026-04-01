@@ -1,24 +1,26 @@
 <template>
-  <motion.p
-    class="text-mute mt-5"
+  <motion.div
+    class="text-mute mt-5 flex flex-row items-center gap-2 text-xs tracking-widest overflow-hidden"
     :initial="{ opacity: 0, y: -20 }"
     :while-in-view="{ opacity: 1, y: 0 }"
-    >WEB DEVELOPER</motion.p
   >
-  <div class="flex flex-col justify-center min-h-screen overflow-y-hidden">
-    <motion.div :initial="{ opacity: 0, x: -50 }" :while-in-view="{ opacity: 1, x: 0 }">
-      <Header> </Header>
-    </motion.div>
+    <div class="bg-green-400 h-2 w-2 rounded-full animate-ping"></div>
 
-    <div class="grid grid-cols-7 mt-5 place-items-center">
+    <h1>AVAILABLE FOR WORK</h1>
+  </motion.div>
+  <section class="flex flex-row items-center min-h-screen overflow-hidden">
+    <div class="mt-5">
+      <motion.div :initial="{ opacity: 0, x: -50 }" :while-in-view="{ opacity: 1, x: 0 }">
+        <Header> </Header>
+      </motion.div>
       <div class="col-span-3 px-5">
         <div>
-          <i class="pi pi-arrow-down-right mb-3"></i>
+          <i class="pi pi-arrow-down-right my-3"></i>
           <motion.p
-            :initial="{ opacity: 0 }"
-            :while-in-view="{ opacity: 1 }"
+            :initial="{ opacity: 0, x: 30 }"
+            :while-in-view="{ opacity: 1, x: 0 }"
             :transition="{ duration: 0.5 }"
-            class="text-sm text-body"
+            class="text-sm text-body w-[70%]"
           >
             I build fast, modern web apps — from clean frontends to solid backends. Based in the
             Philippines, available for work worldwide.
@@ -27,14 +29,14 @@
 
         <div class="flex flex-row gap-5 my-5">
           <motion.div
-            :initial="{ opacity: 0 }"
-            :while-in-view="{ opacity: 1 }"
+            :initial="{ opacity: 0, scale: 0.2 }"
+            :while-in-view="{ opacity: 1, scale: 1 }"
             :transition="{ type: 'spring', stiffness: 120, damping: 20, delay: index * 0.1 }"
             v-for="(icon, index) in devIcons"
             :key="index"
-            class="border-border border-2 p-2 rounded-md"
+            class="border-border border-2 p-2 rounded-md flex items-center justify-center"
           >
-            <i :class="icon" class="text-3xl"></i>
+            <i :class="icon" class="text-xl md:text-2xl"></i>
           </motion.div>
         </div>
 
@@ -48,19 +50,23 @@
           </button>
         </motion.div>
       </div>
-      <motion.div class="rounded-xl col-span-4" :initial="{ x: 50 }" :while-in-view="{ x: 0 }">
-        <CodeEditor></CodeEditor>
-      </motion.div>
     </div>
-  </div>
+    <motion.div class="rounded-xl hidden md:block" :initial="{ x: 50 }" :while-in-view="{ x: 0 }">
+      <CodeEditor></CodeEditor>
+    </motion.div>
+  </section>
 
   <motion.div
     :initial="{ opacity: 0, y: 50 }"
     :while-in-view="{ opacity: 1, y: 0 }"
-    class="flex flex-col text-end bottom-0 absolute right-15 overflow-hidden px-5"
+    class="flex-col text-end bottom-0 absolute right-15 overflow-hidden px-5 hidden md:flex"
   >
-    <p class="font-light">AVAILABLE FOR WORK</p>
-    <h1 class="text-5xl font-bold">PORTFOLIO'26</h1>
+    <p class="text-xs tracking-[0.2em] text-zinc-500 uppercase font-mono mb-1">Portfolio</p>
+    <h2
+      class="text-4xl font-bold bg-linear-to-br from-white to-zinc-400 bg-clip-text text-transparent"
+    >
+      2026
+    </h2>
   </motion.div>
 </template>
 

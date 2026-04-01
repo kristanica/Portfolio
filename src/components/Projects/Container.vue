@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[80%]" @click="$emit('setProject')">
+  <div @click="$emit('setProject')">
     <div
       class="bg-bg px-5 py-6 rounded-b-md flex flex-col border-border border hover:-translate-y-2 hover:border-elevated transition-all duration-200 ease-in cursor-pointer"
     >
