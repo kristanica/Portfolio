@@ -1,6 +1,9 @@
 <template>
-  <div iv class="flex items-center min-h-screen justify-between">
-    <div class="w-[20%] flex flex-col items-start">
+  <div
+    iv
+    class="flex items-center min-h-screen justify-between flex-col sm:flex-col lg:flex-row items-start md:flex-col"
+  >
+    <div class="">
       <motion.div
         class="flex flex-row items-center gap-2"
         :initial="{ opacity: 0, x: -50 }"
@@ -42,7 +45,7 @@
     </div>
 
     <div
-      class="w-[50%] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full overflow-y-auto space-y-10 px-5"
+      class="w-full lg:w-[50%] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full overflow-y-auto space-y-10 px-5"
     >
       <div class="border-l-2 border-border pl-8 flex flex-col gap-10">
         <motion.div
@@ -120,9 +123,6 @@
           :viewport="{ once: true }"
           class="group relative tech-pill"
         >
-          <!-- Hover glow -->
-
-          <!-- Pill content -->
           <div
             class="relative px-3 py-1 bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 group-hover:border-purple-500/50 rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-1 group-hover:rotate-2"
           >

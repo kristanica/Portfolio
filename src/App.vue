@@ -138,7 +138,7 @@ onUnmounted(() => {
       id="toListen"
       ref="toListen"
       :class="[
-        'bg-[#0A0805] relative  element   h-screen overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full transition-all duration-300',
+        'bg-[#0A0805] relative  element  overflow-x-hidden  h-screen overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-bg [&::-webkit-scrollbar-thumb]:bg-elevated [&::-webkit-scrollbar-thumb]:rounded-full transition-all duration-300',
       ]"
     >
       <motion-config

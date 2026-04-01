@@ -51,7 +51,11 @@
         </motion.div>
       </div>
     </div>
-    <motion.div class="rounded-xl hidden md:block" :initial="{ x: 50 }" :while-in-view="{ x: 0 }">
+    <motion.div
+      class="rounded-xl hidden sm:hidden md:block"
+      :initial="{ x: 50 }"
+      :while-in-view="{ x: 0 }"
+    >
       <CodeEditor></CodeEditor>
     </motion.div>
   </section>

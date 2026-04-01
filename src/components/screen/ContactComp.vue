@@ -100,10 +100,10 @@
         </button>
       </motion.form>
     </div>
-
-    <footer
-      class="w-full flex items-center justify-center mt-20 border-t text-mute border-border p-20"
-    >
+    <footer class="w-full flex-col flex items-center justify-center mt-20 p-20">
+      <div
+        class="bg-linear-to-r from-transparent via-dim/10 my-20 to-transparent p-0.5 rounded-lg w-full"
+      ></div>
       <motion.p :initial="{ opacity: 0, y: 20 }" :whileInView="{ opacity: 1, y: 0 }">
         © 2026 Leewell M. Caputol. Implemented with Vue.
       </motion.p>

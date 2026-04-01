@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 sm:px-6 md:px-50 lg:px-24 xl:px-40">
+  <div class="px-4 sm:px-2 md:px-10 lg:px- xl:px-50">
     <div id="Hero">
       <HeroComp />
     </div>
