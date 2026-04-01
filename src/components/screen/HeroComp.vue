@@ -34,18 +34,22 @@
             :transition="{ type: 'spring', stiffness: 120, damping: 20, delay: index * 0.1 }"
             v-for="(icon, index) in devIcons"
             :key="index"
-            class="border-border border-2 p-2 rounded-md flex items-center justify-center"
+            class="border-border border p-2 rounded-md flex items-center justify-center hover:bg-elevated/10 transition-all duration-200 ease-in-out cursor-pointer hover:scale-105 hover:border-border-mi"
           >
             <i :class="icon" class="text-xl md:text-2xl"></i>
           </motion.div>
         </div>
 
         <motion.div class="flex flex-row gap-5" :initial="{ x: 50 }" :while-in-view="{ x: 0 }">
-          <button class="border-border border-2 px-7 py-2 rounded-md text-sm">
+          <button
+            class="border-border border rounded-md items-center px-5 py-4 h-full hover:bg-elevated/10 transition-all duration-200 ease-in-out cursor-pointer hover:scale-105 hover:border-border-mid"
+          >
             CONTACT <i class="pi pi-envelope ml-2"></i>
           </button>
 
-          <button class="border-border border-2 px-7 py-2 rounded-md text-sm">
+          <button
+            class="border-border border rounded-md items-center px-5 py-4 h-full hover:bg-elevated/10 transition-all duration-200 ease-in-out cursor-pointer hover:scale-105 hover:border-border-mid"
+          >
             GET RESUME <i class="pi pi-download ml-2"></i>
           </button>
         </motion.div>
@@ -74,7 +78,7 @@
   </motion.div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import CodeEditor from '@/components/Hero/CodeEditor.vue'
 import Header from '@/components/Hero/Header.vue'
 import { motion } from 'motion-v'
@@ -85,6 +89,10 @@ const devIcons = [
   'devicon-express-original',
   'devicon-laravel-original',
 ]
+
+const scrollToContact = () => {
+  document.getElementById('Contact')?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <style scoped></style>

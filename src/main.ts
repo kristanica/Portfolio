@@ -8,6 +8,51 @@ import Project from './views/Project.vue'
 import Contact from './views/Contact.vue'
 import 'primeicons/primeicons.css'
 import 'devicon'
+// Simple Icons (si) + others
+import {
+  SiReact,
+  SiReactquery,
+  SiTypescript,
+  SiVuedotjs,
+  SiTailwindcss,
+  SiJavascript,
+  SiLaravel,
+  SiExpress,
+  SiNodedotjs,
+  SiMysql,
+  SiPhp,
+  SiPostman,
+  SiFirebase,
+  SiFigma,
+  SiCanva,
+  SiAseprite,
+  SiGit,
+  SiGithub,
+  SiVisualstudiocode,
+} from 'oh-vue-icons/icons'
+import { addIcons, OhVueIcon } from 'oh-vue-icons'
+
+// Add all icons
+addIcons(
+  SiReact,
+  SiTypescript,
+  SiVuedotjs,
+  SiTailwindcss,
+  SiJavascript,
+  SiLaravel,
+  SiExpress,
+  SiNodedotjs,
+  SiMysql,
+  SiPhp,
+  SiPostman,
+  SiFirebase,
+  SiFigma,
+  SiCanva,
+  SiAseprite,
+  SiGit,
+  SiGithub,
+  SiVisualstudiocode,
+)
 
 const routes = [
   {
@@ -58,4 +103,8 @@ const router = createRouter({
 //   next()
 // })
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+app.component('v-icon', OhVueIcon)
+app.use(router)
+
+app.mount('#app')
